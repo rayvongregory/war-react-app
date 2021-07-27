@@ -1,0 +1,59 @@
+header {
+  width: 100%;
+  padding: 1vw;
+  font-family: "Holtwood One SC", sans-serif;
+  line-height: 1em;
+  text-align: center;
+  font-size: clamp(2rem, 10vw, 4.5rem);
+  cursor: default;
+}
+
+.header-army-green {
+  background-color: #474f1d;
+  color: white;
+}
+
+.header-pink {
+  background-color: #e06377;
+  color: white;
+}
+
+.header-red {
+  background-color: #913c22;
+  color: white;
+}
+
+.header-orange {
+  background-color: #670305;
+  color: white;
+}
+
+.header-yellow {
+  background-color: black;
+  color: white;
+}
+
+.header-green {
+  background-color: #1d741b;
+  color: white;
+}
+
+.header-blue {
+  background-color: #618685;
+  color: white;
+}
+
+.header-purple {
+  background-color: #7c46b9;
+  color: white;
+}
+
+.header-brown {
+  background-color: #674d3c;
+  color: white;
+}
+
+.header-black {
+  background-color: #6f5b3e;
+  color: white;
+}

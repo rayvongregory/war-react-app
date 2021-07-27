@@ -1,0 +1,56 @@
+.warzone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.warzone img {
+  width: clamp(10rem, 12.5%, 15rem);
+  margin: 1%;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.army-green {
+  background-color: #fce8da;
+}
+
+.pink {
+  background-color: #eeac99;
+}
+
+.red {
+  background-color: #c6b79b;
+}
+
+.orange {
+  background-color: #ffc680;
+}
+
+.yellow {
+  background-color: #fbfae4;
+}
+
+.green {
+  background-color: #ede7d0;
+}
+
+.blue {
+  background-color: #fefbd8;
+}
+
+.purple {
+  background-color: #d6d4e0;
+}
+
+.brown {
+  background-color: #f1c0b9;
+}
+
+.black {
+  background-color: #f9f6f0;
+}

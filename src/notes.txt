@@ -1,0 +1,283 @@
+TODO:
+
+Find a way to turn off warInProgress
+Find a way to make players in war discard three cards to war pile
+
+<!-- This is the setSummary function from Summary.js-->
+
+let WINNERS = getWinners([
+      this.props.user,
+      this.props.comp1,
+      this.props.comp2,
+      this.props.comp3,
+    ]);
+    if (WINNERS.length === 1) {
+      this.props.handleWinner(WINNERS[0]);
+      return (document.getElementById(
+        "summary"
+      ).innerHTML = `${WINNERS[0].name} won this round.`);
+    } else {
+      WINNERS = checkHands(WINNERS);
+      // console.log(WINNERS)
+      switch (true) {
+        case WINNERS.length === 2 && this.props.numPlayers === 2:
+          //maybe a for loop could work?
+          //what do you want?
+          //i want to have one function that handles all of the cases to avoid writing out every case but that might be unavoidable bc each case kind of has to be handle on a case-by-case basis for the summary to be accurate
+          //maybe make an array for loser and those compare them?
+
+          if (WINNERS[0].hasCards && WINNERS[1].hasCards) {
+            // this.props.handleWar([WINNERS[0], WINNERS[1]])
+            return (document.getElementById("summary").innerHTML =
+              "Both players will go to war in the next round.");
+          } else if (
+            (WINNERS[0].hasCards && !WINNERS[1].hasCards) ||
+            (WINNERS[1].hasCards && !WINNERS[0].hasCards)
+          ) {
+            const WINNER = WINNERS[0].hasCards ? WINNERS[0] : WINNERS[1];
+            const LOSER = WINNERS[1].hasCards ? WINNERS[0] : WINNERS[1];
+            this.props.handleWinner(WINNER);
+            return (document.getElementById(
+              "summary"
+            ).innerHTML = `${LOSER.name} does not have enough cards to go to war with ${WINNER.name}. <br> ${WINNER.name} wins the game by default.`);
+          } else {
+            return (document.getElementById("summary").innerHTML =
+              "Neither player has enough cards to go to war in the next round. <br> Both players lose.");
+          }
+
+        case WINNERS.length === 2 && this.props.numPlayers === 4:
+          console.log(WINNERS);
+
+          if (WINNERS[0].hasCards && WINNERS[1].hasCards) {
+            // this.props.handleWar([WINNERS[0], WINNERS[1]])
+            return (document.getElementById(
+              "summary"
+            ).innerHTML = `${WINNERS[0].name} will go to war with ${WINNERS[1].name} in the next round.`);
+          } else if (
+            (WINNERS[0].hasCards && !WINNERS[1].hasCards) ||
+            (WINNERS[1].hasCards && !WINNERS[0].hasCards)
+          ) {
+            const WINNER = WINNERS[0].hasCards ? WINNERS[0] : WINNERS[1];
+            const LOSER = WINNERS[1].hasCards ? WINNERS[0] : WINNERS[1];
+            // this.props.handleWar([WINNERS[0], WINNERS[1]])
+            this.props.handleWinner(WINNER);
+            return (document.getElementById(
+              "summary"
+            ).innerHTML = `${LOSER.name} does not have enough cards to go to war with ${WINNER.name}. <br> ${WINNER.name} wins this round and the war by default. ${LOSER.name} loses.`);
+          } else {
+            // this.props.handleWar([WINNERS[0], WINNERS[1]]);
+            return (document.getElementById(
+              "summary"
+            ).innerHTML = `Neither ${WINNERS[0].name} or ${WINNERS[1].name} has enough cards to go to war in the next round. <br> Both players lose.`);
+          }
+
+        case WINNERS.length === 3:
+          // this.props.handleWar([WINNERS[0], WINNERS[1], WINNERS[2]])
+          return (document.getElementById(
+            "summary"
+          ).innerHTML = `${WINNERS[0].name} will go to war with ${WINNERS[1].name} and ${WINNERS[2].name} in the next round.`);
+
+        case WINNERS.length === 4:
+          // this.props.handleWar(
+          //   [WINNERS[0], WINNERS[1], WINNERS[2], WINNERS[3]])
+          return (document.getElementById("summary").innerHTML =
+            "All players will go to war in the next round.");
+        default:
+          return;
+      }
+    }
+
+<!-- This is the handle function from WarZone.js-->
+
+const PLAYERS = [
+      this.props.user,
+      this.props.comp1,
+      this.props.comp2,
+      this.props.comp3,
+    ];
+    if (event === "newRound") {
+      for (let x in PLAYERS) {
+        if (x < this.state.num) {
+          if (!PLAYERS[x].hasCards) {
+            //this is a little buggy because hasCards isn't totally accurate; players with no cards still has hasCards set to true
+            document.getElementsByClassName("card")[x].style.opacity = "0";
+          } else {
+            document.getElementsByClassName("card")[
+              x
+            ].src = `${this.state.color}.png`;
+          }
+        }
+      }
+      return;
+    }
+    switch (this.props.warInProgress) {
+      case true:
+        for (let x in PLAYERS) {
+          if (x < this.state.num) {
+            if (PLAYERS[x].inWar && event === "flip") {
+              document.getElementsByClassName("card")[
+                x
+              ].src = `${PLAYERS[x].deck[0]}.png`;
+            } else {
+              document.getElementsByClassName("card")[
+                x
+              ].src = `${this.state.color}.png`;
+            }
+          }
+        }
+        break;
+
+      case false:
+        for (let x in PLAYERS) {
+          if (x < this.state.num) {
+            if (PLAYERS[x].hasCards && event === "flip") {
+              document.getElementsByClassName("card")[
+                x
+              ].src = `${PLAYERS[x].deck[0]}.png`;
+            } else {
+              document.getElementsByClassName("card")[x].style.opacity = "0";
+            }
+          }
+        }
+        break;
+      default:
+    }
+
+
+<!-- This is the handleWar function from App.js --> 
+
+let warpile = this.state.warpile ? this.state.warpile : [];
+    if (!this.state.warInProgress) {
+      if (this.state.user.hasCards) {
+        warpile.push(this.state.user.deck.shift());
+        if (this.state.user.deck.length === 0) {
+          this.setState((prev) => {
+            return {
+              user: { ...prev.user, hasCards: false },
+            };
+          });
+        }
+      }
+
+      if (this.state.comp1.hasCards) {
+        warpile.push(this.state.comp1.deck.shift());
+        if (this.state.comp1.deck.length === 0) {
+          this.setState((prev) => {
+            return {
+              comp1: { ...prev.comp1, hasCards: false },
+            };
+          });
+        }
+      }
+      if (this.state.comp2.hasCards) {
+        warpile.push(this.state.comp2.deck.shift());
+        if (this.state.comp2.deck.length === 0) {
+          this.setState((prev) => {
+            return {
+              comp2: { ...prev.comp2, hasCards: false },
+            };
+          });
+        }
+      }
+      if (this.state.comp3.hasCards) {
+        warpile.push(this.state.comp3.deck.shift());
+        if (this.state.comp3.deck.length === 0) {
+          this.setState((prev) => {
+            return {
+              comp3: { ...prev.comp3, hasCards: false },
+            };
+          });
+        }
+      }
+      for (let x in players) {
+        if (players[x].inWar && !players[x].hasCards) {
+          console.log(players[x].deck);
+          warpile = warpile.concat(players[x].deck);
+          players[x].deck = [];
+          players[x].inWar = false;
+        }
+      }
+      console.log(warpile);
+      this.setState({ warpile: warpile, warInProgress: true });
+    } else {
+      console.log("are they losing 3 cards??");
+      //this is bad,
+      for (let x in players) {
+        if (players[x].inWar && players[x].deck.length > 3) {
+          warpile.push(players[x].deck.shift());
+          warpile.push(players[x].deck.shift());
+          warpile.push(players[x].deck.shift());
+          players[x].hasCards = false;
+        } else {
+          warpile = warpile.concat(players[x].deck);
+          players[x].deck = [];
+        }
+      }
+      this.setState({ warpile: warpile });
+    }
+
+
+
+<!-- This is the "startnewround" case of handleClick from App.js -->
+
+console.log(this.state.warpile, this.state.winner);
+        if (this.state.winner) {
+          if (this.state.user.hasCards) {
+            this.state.winner.deck.push(this.state.user.deck.shift());
+            if (this.state.user.deck.length === 0) {
+              this.setState((prev) => {
+                return {
+                  user: { ...prev.user, hasCards: false },
+                };
+              });
+            }
+          }
+          if (this.state.comp1.hasCards) {
+            this.state.winner.deck.push(this.state.comp1.deck.shift());
+            if (this.state.comp1.deck.length === 0) {
+              this.setState((prev) => {
+                return {
+                  comp1: { ...prev.comp1, hasCards: false },
+                };
+              });
+            }
+          }
+          if (this.state.comp2.hasCards) {
+            this.state.winner.deck.push(this.state.comp2.deck.shift());
+            if (this.state.comp2.deck.length === 0) {
+              this.setState((prev) => {
+                return {
+                  comp2: { ...prev.comp2, hasCards: false },
+                };
+              });
+            }
+          }
+          if (this.state.comp3.hasCards) {
+            this.state.winner.deck.push(this.state.comp3.deck.shift());
+            if (this.state.comp3.deck.length === 0) {
+              this.setState((prev) => {
+                return {
+                  comp3: { ...prev.comp3, hasCards: false },
+                };
+              });
+            }
+          }
+          if (this.state.warpile) {
+            console.log(this.state.warpile);
+            this.state.winner.deck.concat(this.state.warpile);
+          }
+          this.setState({
+            winner: "",
+            warpile: "",
+            flip: false,
+            warInProgress: false,
+          });
+        } else {
+          const PLAYERS = [
+            this.state.user,
+            this.state.comp1,
+            this.state.comp2,
+            this.state.comp3,
+          ];
+          this.handleWar(PLAYERS);
+        }

@@ -1,0 +1,9 @@
+.scoreboard {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  font-family: "Franklin Gothic Medium";
+  cursor: default;
+}

@@ -1,0 +1,77 @@
+.buttonswrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#draw,
+#end {
+  /* display: inline-block; */
+  margin: 0% 1%;
+  text-align: center;
+  width: clamp(10rem, 12.5%, 15rem);
+  border: solid black 2px;
+  border-radius: 5px;
+  line-height: 1.5em;
+  font-family: "Franklin Gothic Light";
+  font-size: 1em;
+  outline: none;
+}
+
+#draw:hover,
+#end:hover {
+  filter: brightness(1.05);
+  cursor: pointer;
+}
+
+#draw:active,
+#end:active {
+  filter: brightness(0.9);
+  transform: scale(0.99);
+}
+
+.button-army-green {
+  background-color: #f9bfb2;
+}
+
+.button-pink {
+  background-color: #c83349;
+  color: white;
+}
+
+.button-red {
+  background-color: #aea89e;
+  color: white;
+}
+
+.button-orange {
+  background-color: #fdd264;
+}
+
+.button-yellow {
+  background-color: #d1a62f;
+  color: black;
+}
+
+.button-green {
+  background-color: #f1c0b9;
+  color: white;
+}
+
+.button-blue {
+  background-color: #d5f4e6;
+}
+
+.button-purple {
+  background-color: #7db0b5;
+}
+
+.button-brown {
+  background-color: #21b6a8;
+}
+
+.button-black {
+  background-color: #c4ae78;
+  color: white;
+}

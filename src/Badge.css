@@ -1,0 +1,64 @@
+.badge {
+  display: inline-block;
+  width: clamp(10rem, 12.5%, 15rem);
+  border: solid black 3px;
+  border-radius: 5px;
+  margin: 1% 1% 0% 1%;
+  overflow: hidden;
+}
+
+.badge label {
+  display: block;
+  border-bottom: 3px solid black;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.badge .score {
+  display: block;
+  width: 100%;
+  text-align: center;
+  border-top: 3px sold black;
+  background-color: white;
+  font-size: clamp(1rem, 4vw, 2rem);
+}
+
+.label-army-green {
+  background-color: #f9bfb2;
+}
+
+.label-pink {
+  background-color: #c83349;
+}
+
+.label-red {
+  background-color: #aea89e;
+}
+
+.label-orange {
+  background-color: #fdd264;
+}
+
+.label-yellow {
+  background-color: #d1a62f;
+}
+
+.label-green {
+  background-color: #f1c0b9;
+}
+
+.label-blue {
+  background-color: #d5f4e6;
+}
+
+.label-purple {
+  background-color: #7db0b5;
+}
+
+.label-brown {
+  background-color: #21b6a8;
+}
+
+.label-black {
+  background-color: #c4ae78;
+}

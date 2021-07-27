@@ -1,0 +1,150 @@
+.overlay {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.welcomemessage,
+.colors,
+.numplayers,
+.distdiv {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  background-color: white;
+  border: solid black 5px;
+  border-radius: 10px;
+  overflow: hidden;
+  padding-bottom: 1%;
+}
+
+.welcomemessage > h2,
+.colors > h2,
+.numplayers > h2,
+.distdiv > h2 {
+  text-align: center;
+  padding: 1%;
+  border-bottom: 5px solid black;
+  background-color: #f9bfb2;
+  color: black;
+  font-family: "Asap", sans-serif;
+  font-size: clamp(2.5rem, 3.5vw, 3rem);
+  cursor: default;
+}
+
+.redo {
+  font-size: 0.5em;
+  display: inline-block;
+  position: absolute;
+  color: black;
+  left: 1%;
+}
+
+.redo:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.welcomemessage > p {
+  padding: 2%;
+  display: block;
+  text-align: left;
+  font-family: sans-serif;
+  font-size: clamp(0.95rem, 1.2vw, 1.4rem);
+  color: black;
+}
+
+.choices > img {
+  padding: 2% 2% 0% 2%;
+  width: 20%;
+  transition-duration: 0.3s;
+  filter: grayscale(30%);
+}
+
+.welcomemessage:hover {
+  cursor: default;
+}
+
+.choices > img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  filter: grayscale(0%);
+}
+
+.distcontainer {
+  display: flex;
+  width: 100%;
+  padding: 2%;
+}
+
+.dist {
+  flex: 1;
+  width: 50%;
+  margin: 1% 1% 0% 1%;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.05);
+  transition-duration: 0.3s;
+}
+
+.dist:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.05);
+  cursor: pointer;
+  box-shadow: 0px 3px 8px #000, inset 0px 2px 3px #fff;
+}
+
+.redo:active,
+.dist:active,
+.colors > img:active {
+  filter: brightness(0.9);
+  transform: scale(1.03);
+}
+
+.dist > h2 {
+  text-align: center;
+  font-family: "Asap", sans-serif;
+  text-decoration: underline 1px;
+  padding-bottom: 0.2%;
+  line-height: 2rem;
+  font-size: clamp(1.3rem, 2vw, 2rem);
+  margin-bottom: 3%;
+  pointer-events: none;
+}
+
+.dist > p {
+  text-align: left;
+  margin: 0% 2% 2% 2%;
+  font-family: sans-serif;
+  font-size: clamp(1rem, 1.2vw, 1.4rem);
+  pointer-events: none;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  visibility: visible;
+}
+
+@media only screen and (max-width: 710px) {
+  .welcomemessage > h2,
+  .colors > h2,
+  .numplayers > h2,
+  .distdiv > h2 {
+    font-size: clamp(2.5rem, 3.5vw, 3rem);
+  }
+
+  .welcomemessage,
+  .colors,
+  .numplayers,
+  .distdiv {
+    width: 80vw;
+  }
+}
