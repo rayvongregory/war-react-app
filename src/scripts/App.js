@@ -156,7 +156,6 @@ class App extends Component {
         this.comp3.deck = []
         this.playersInWar = []
         this.winner = ""
-        // console.log(document.querySelector("body").classList[0])
         this.setState(
           {
             numplayers: 4,

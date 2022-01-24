@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import "./ScoreBoard.css"
+import "../styles/ScoreBoard.css"
 import Badge from "./Badge"
 
 class ScoreBoard extends Component {

@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import Numbr from "./Numbr"
-import "./Welcome.css"
+import "../styles/Welcome.css"
 import { message } from "./WarFunctions.js"
 
 class Welcome extends Component {
@@ -155,61 +155,61 @@ class Welcome extends Component {
           <div className="choices">
             <img
               onClick={this.handleChanges}
-              src="pink.png"
+              src="/cards/pink.png"
               id="pink"
               alt="pink card"
             />
             <img
               onClick={this.handleChanges}
-              src="red.png"
+              src="/cards/red.png"
               id="red"
               alt="red card"
             />
             <img
               onClick={this.handleChanges}
-              src="orange.png"
+              src="/cards/orange.png"
               id="orange"
               alt="orange card"
             />
             <img
               onClick={this.handleChanges}
-              src="yellow.png"
+              src="/cards/yellow.png"
               id="yellow"
               alt="yellow card"
             />
             <img
               onClick={this.handleChanges}
-              src="army-green.png"
+              src="/cards/army-green.png"
               id="army-green"
               alt="army green card"
             />
             <img
               onClick={this.handleChanges}
-              src="green.png"
+              src="/cards/green.png"
               id="green"
               alt="green card"
             />
             <img
               onClick={this.handleChanges}
-              src="blue.png"
+              src="/cards/blue.png"
               id="blue"
               alt="blue card"
             />
             <img
               onClick={this.handleChanges}
-              src="purple.png"
+              src="/cards/purple.png"
               id="purple"
               alt="purple card"
             />
             <img
               onClick={this.handleChanges}
-              src="brown.png"
+              src="/cards/brown.png"
               id="brown"
               alt="brown card"
             />
             <img
               onClick={this.handleChanges}
-              src="black.png"
+              src="/cards/black.png"
               id="black"
               alt="black card"
             />

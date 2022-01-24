@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import "./Numbr.css"
+import "../styles/Numbr.css"
 
 class Numbr extends Component {
   constructor(props) {

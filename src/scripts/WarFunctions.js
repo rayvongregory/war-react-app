@@ -1,6 +1,4 @@
-//cutDeck takes in a dist value and creates, shuffles, and cuts the deck depending on the value of dist
 export function cutDeck(dist, num) {
-  //creates deck
   const RANK = [
     "2",
     "3",
@@ -15,28 +13,27 @@ export function cutDeck(dist, num) {
     "J",
     "Q",
     "K",
-  ];
-  const SUIT = ["C", "D", "H", "S"];
-  let deck = [];
+  ]
+  const SUIT = ["C", "D", "H", "S"]
+  let deck = []
 
   for (let r in RANK) {
     for (let s in SUIT) {
-      deck.push(`${RANK[r]}${SUIT[s]}`);
+      deck.push(`${RANK[r]}${SUIT[s]}`)
     }
   }
-  deck = shuffle(shuffle(deck));
-  //cuts deck
+  deck = shuffle(shuffle(deck))
   switch (dist) {
     case "r":
       while (getRank(deck[0]) !== 14) {
-        deck.push(deck.shift());
+        deck.push(deck.shift())
       }
       const ALL_ACES = [
         deck.indexOf("AC"),
         deck.indexOf("AD"),
         deck.indexOf("AH"),
         deck.indexOf("AS"),
-      ].sort((a, b) => a - b);
+      ].sort((a, b) => a - b)
       return num === 2
         ? [
             shuffle(deck.slice(0, ALL_ACES[2])),
@@ -47,7 +44,7 @@ export function cutDeck(dist, num) {
             shuffle(deck.slice(ALL_ACES[1], ALL_ACES[2])),
             shuffle(deck.slice(ALL_ACES[2], ALL_ACES[3])),
             shuffle(deck.slice(ALL_ACES[3], 52)),
-          ];
+          ]
     case "u":
       return num === 2
         ? [deck.slice(0, 26), deck.slice(26, 52)]
@@ -56,122 +53,121 @@ export function cutDeck(dist, num) {
             deck.slice(13, 26),
             deck.slice(26, 39),
             deck.slice(39, 52),
-          ];
+          ]
     default:
-      break;
+      break
   }
 }
 
 export function shuffle(deck) {
   for (let i in deck) {
-    let j = Math.floor(Math.random() * deck.length);
-    let cardOut = deck[j];
-    deck[j] = deck[i];
-    deck[i] = cardOut;
+    let j = Math.floor(Math.random() * deck.length)
+    let cardOut = deck[j]
+    deck[j] = deck[i]
+    deck[i] = cardOut
   }
-  return deck;
+  return deck
 }
 
 function getRank(card) {
   if (card === undefined) {
-    return 0;
+    return 0
   }
   switch (card[0]) {
     case "2":
-      return 2;
+      return 2
     case "3":
-      return 3;
+      return 3
     case "4":
-      return 4;
+      return 4
     case "5":
-      return 5;
+      return 5
     case "6":
-      return 6;
+      return 6
     case "7":
-      return 7;
+      return 7
     case "8":
-      return 8;
+      return 8
     case "9":
-      return 9;
+      return 9
     case "J":
-      return 11;
+      return 11
     case "Q":
-      return 12;
+      return 12
     case "K":
-      return 13;
+      return 13
     case "A":
-      return 14;
+      return 14
     default:
-      return 10;
+      return 10
   }
 }
 
 export function getWinners(players, warInProgress) {
-  //find the highest card and players of those cards
-  let currHighestRank = 0;
-  let winners = [];
+  let currHighestRank = 0
+  let winners = []
   switch (warInProgress) {
     case true:
       players.forEach((player) => {
         if (player.inWar) {
-          let playerRank = getRank(player.deck[0]);
+          let playerRank = getRank(player.deck[0])
           if (playerRank > currHighestRank && playerRank !== 0) {
-            winners = [player];
-            currHighestRank = playerRank;
+            winners = [player]
+            currHighestRank = playerRank
           } else if (playerRank === currHighestRank) {
-            winners.push(player);
+            winners.push(player)
           }
         }
-      });
-      break;
+      })
+      break
     case false:
       players.forEach((player) => {
         if (player.deck.length > 0) {
-          let playerRank = getRank(player.deck[0]);
+          let playerRank = getRank(player.deck[0])
           if (playerRank > currHighestRank && playerRank !== 0) {
-            winners = [player];
-            currHighestRank = playerRank;
+            winners = [player]
+            currHighestRank = playerRank
           } else if (playerRank === currHighestRank) {
-            winners.push(player);
+            winners.push(player)
           }
         }
-      });
-      break;
+      })
+      break
     default:
-      break;
+      break
   }
-  return winners;
+  return winners
 }
 
 export function noMoreCards(players) {
-  let condition = true;
+  let condition = true
   for (let player of players) {
     if (player.deck.length > 0) {
-      condition = false;
-      break;
+      condition = false
+      break
     }
   }
-  return condition;
+  return condition
 }
 
 export function findWinner(players, name) {
-  let winner = "";
+  let winner = ""
   players.forEach((player) => {
     if (player.name === name) {
-      winner = player;
+      winner = player
     }
-  });
-  return winner;
+  })
+  return winner
 }
 
 export function checkHands(players) {
   players.forEach((player, x) => {
     if (player.deck.length === 0) {
-      player.inWar = false;
-      players.splice(x, 0);
+      player.inWar = false
+      players.splice(x, 0)
     }
-  });
-  return players;
+  })
+  return players
 }
 
 export function message() {
@@ -201,5 +197,5 @@ export function message() {
       "to the war pile.",
 
     "Click anywhere to begin or hit Enter...",
-  ];
+  ]
 }

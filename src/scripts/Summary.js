@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import "./Summary.css"
+import "../styles/Summary.css"
 import { getWinners, noMoreCards } from "./WarFunctions.js"
 
 class Summary extends Component {
@@ -119,11 +119,9 @@ class Summary extends Component {
       default:
         break
     }
-    //make sure to have something for if there's an ongoing war
   }
 
   setWarText() {
-    //This should be all that's needed at this moment 5/28 7:45 PM
     document.getElementById("draw").setAttribute("disabled", "disabled")
     let summary = document.getElementById("summary")
     let time = this.state.autoplay ? 0 : 1000

@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import "./Badge.css"
+import "../styles/Badge.css"
 
 class Badge extends Component {
   constructor(props) {

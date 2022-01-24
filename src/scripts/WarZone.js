@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import "./WarZone.css"
+import "../styles/WarZone.css"
 
 class WarZone extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class WarZone extends Component {
     PLAYERS.forEach((player, x) => {
       let card = document.getElementsByClassName("card")[x]
       if (card) {
-        card.src = `${this.state.color}.png`
+        card.src = `/cards/${this.state.color}.png`
         if (card.style.opacity === "0") {
           card.removeAttribute("style")
         }
@@ -85,7 +85,7 @@ class WarZone extends Component {
               let card = document.getElementsByClassName("card")[x]
               if (player.inWar && card) {
                 setTimeout(() => {
-                  return (card.src = `${player.deck[0]}.png`)
+                  return (card.src = `/cards/${player.deck[0]}.png`)
                 }, time)
               }
             })
@@ -94,7 +94,7 @@ class WarZone extends Component {
             PLAYERS.forEach((player, x) => {
               let card = document.getElementsByClassName("card")[x]
               if (player.deck.length > 0 && card) {
-                return (card.src = `${player.deck[0]}.png`)
+                return (card.src = `/cards/${player.deck[0]}.png`)
               } else {
                 if (card) {
                   return (card.style.opacity = "0")
@@ -110,10 +110,10 @@ class WarZone extends Component {
         PLAYERS.forEach((player, x) => {
           let card = document.getElementsByClassName("card")[x]
           if (player.deck.length > 0 && card) {
-            return (card.src = `${this.state.color}.png`)
+            return (card.src = `/cards/${this.state.color}.png`)
           } else {
             if (card) {
-              card.src = `${this.state.color}.png`
+              card.src = `/cards/${this.state.color}.png`
               return (card.style.opacity = "0")
             }
           }
@@ -131,13 +131,13 @@ class WarZone extends Component {
           <img
             id="user-card"
             className="two card"
-            src={`${this.state.color}.png`}
+            src={`/cards/${this.state.color}.png`}
             alt=""
           />
           <img
             id="comp1-card"
             className="two card"
-            src={`${this.state.color}.png`}
+            src={`/cards/${this.state.color}.png`}
             alt=""
           />
         </div>
@@ -148,25 +148,25 @@ class WarZone extends Component {
           <img
             id="user-card"
             className="four card"
-            src={`${this.state.color}.png`}
+            src={`/cards/${this.state.color}.png`}
             alt=""
           />
           <img
             id="comp1-card"
             className="four card"
-            src={`${this.state.color}.png`}
+            src={`/cards/${this.state.color}.png`}
             alt=""
           />
           <img
             id="comp2-card"
             className="four card"
-            src={`${this.state.color}.png`}
+            src={`/cards/${this.state.color}.png`}
             alt=""
           />
           <img
             id="comp3-card"
             className="four card"
-            src={`${this.state.color}.png`}
+            src={`/cards/${this.state.color}.png`}
             alt=""
           />
         </div>
