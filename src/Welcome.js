@@ -49,6 +49,9 @@ class Welcome extends Component {
   enterKey(e) {
     if (e.key === "Enter" && this.state.welcome === "show") {
       this.handleNumPlayers()
+    } else if (e.key === "Enter" && this.state.overlay === "hide") {
+      e.preventDefault()
+      document.getElementById("draw").click()
     }
   }
 
