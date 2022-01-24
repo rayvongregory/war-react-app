@@ -1,19 +1,27 @@
-import React, { Component } from "react";
-import "./Numbr.css";
+import React, { Component } from "react"
+import "./Numbr.css"
 
 class Numbr extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       id: "",
       numplayers: "",
-    };
+    }
+    this.handleClick = this.handleClick.bind(this)
+  }
 
-    this.handleClick = this.handleClick.bind(this);
+  componentDidUpdate() {
+    if (this.props.reset) {
+      return this.setState({
+        id: "",
+        numplayers: "",
+      })
+    }
   }
 
   handleClick() {
-    this.props.handleDist(this.props.id);
+    this.props.handleDist(this.props.id)
   }
 
   render() {
@@ -21,8 +29,8 @@ class Numbr extends Component {
       <div className="numbr" onClick={this.handleClick}>
         <strong>{this.props.id}</strong>
       </div>
-    );
+    )
   }
 }
 
-export default Numbr;
+export default Numbr

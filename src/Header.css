@@ -8,52 +8,52 @@ header {
   cursor: default;
 }
 
-.header-army-green {
+header.army-green {
   background-color: #474f1d;
   color: white;
 }
 
-.header-pink {
+header.pink {
   background-color: #e06377;
   color: white;
 }
 
-.header-red {
+header.red {
   background-color: #913c22;
   color: white;
 }
 
-.header-orange {
+header.orange {
   background-color: #670305;
   color: white;
 }
 
-.header-yellow {
+header.yellow {
   background-color: black;
   color: white;
 }
 
-.header-green {
+header.green {
   background-color: #1d741b;
   color: white;
 }
 
-.header-blue {
+header.blue {
   background-color: #618685;
   color: white;
 }
 
-.header-purple {
+header.purple {
   background-color: #7c46b9;
   color: white;
 }
 
-.header-brown {
+header.brown {
   background-color: #674d3c;
   color: white;
 }
 
-.header-black {
+header.black {
   background-color: #6f5b3e;
   color: white;
 }

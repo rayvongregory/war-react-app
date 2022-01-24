@@ -15,42 +15,42 @@
   overflow: hidden;
 }
 
-.army-green {
+      dy.army-green {
   background-color: #fce8da;
 }
 
-.pink {
+#body.pink {
   background-color: #eeac99;
 }
 
-.red {
+#body.red {
   background-color: #c6b79b;
 }
 
-.orange {
+#body.orange {
   background-color: #ffc680;
 }
 
-.yellow {
+#body.yellow {
   background-color: #fbfae4;
 }
 
-.green {
+#body.green {
   background-color: #ede7d0;
 }
 
-.blue {
+#body.blue {
   background-color: #fefbd8;
 }
 
-.purple {
+#body.purple {
   background-color: #d6d4e0;
 }
 
-.brown {
+#body.brown {
   background-color: #f1c0b9;
 }
 
-.black {
+#body.black {
   background-color: #f9f6f0;
 }

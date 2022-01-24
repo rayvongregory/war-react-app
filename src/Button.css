@@ -7,7 +7,6 @@
 
 #draw,
 #end {
-  /* display: inline-block; */
   margin: 0% 1%;
   text-align: center;
   width: clamp(10rem, 12.5%, 15rem);
@@ -31,47 +30,59 @@
   transform: scale(0.99);
 }
 
-.button-army-green {
+#draw:disabled,
+#end:disabled {
+  color: rgba(255, 255, 255, 0.3);
+  filter: none;
+}
+
+#draw.no-pointer-events,
+#end.no-pointer-events {
+  pointer-events: none;
+
+}
+
+button.army-green {
   background-color: #f9bfb2;
 }
 
-.button-pink {
+button.pink {
   background-color: #c83349;
   color: white;
 }
 
-.button-red {
+button.red {
   background-color: #aea89e;
   color: white;
 }
 
-.button-orange {
+button.orange {
   background-color: #fdd264;
 }
 
-.button-yellow {
+button.yellow {
   background-color: #d1a62f;
   color: black;
 }
 
-.button-green {
+button.green {
   background-color: #f1c0b9;
   color: white;
 }
 
-.button-blue {
+button.blue {
   background-color: #d5f4e6;
 }
 
-.button-purple {
+button.purple {
   background-color: #7db0b5;
 }
 
-.button-brown {
+button.brown {
   background-color: #21b6a8;
 }
 
-.button-black {
+button.black {
   background-color: #c4ae78;
   color: white;
 }

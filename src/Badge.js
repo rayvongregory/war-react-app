@@ -1,28 +1,22 @@
-import React, { Component } from "react";
-import "./Badge.css";
+import React, { Component } from "react"
+import "./Badge.css"
 
 class Badge extends Component {
   constructor(props) {
-    super(props);
-    this.state = {
-      color: "label-army-green",
-    };
+    super(props)
+    this.state = {}
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.color !== prevProps.color) {
-      this.setState({ color: `label-${this.props.color}` });
-    }
-  }
+  componentDidUpdate() {}
 
   render() {
     return (
       <div className="badge">
-        <label className={this.state.color}>{this.props.label}</label>
+        <label className={this.props.color}>{this.props.label}</label>
         <div className="score">{this.props.score}</div>
       </div>
-    );
+    )
   }
 }
 
-export default Badge;
+export default Badge

@@ -1,55 +1,59 @@
-import React, { Component } from "react";
-import "./Button.css";
+import React, { Component } from "react"
+import "./Button.css"
 
 class Button extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      color: "button-army-green",
       label: "",
-    };
+      gameOver: false,
+    }
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
-    this.setState({ label: `${this.props.label}` });
+    this.setState({ label: `${this.props.label}` })
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.color !== prevProps.color) {
-      this.setState({ color: `button-${this.props.color}` });
+    if (this.props.reset) {
+      return this.setState({
+        label: `${this.props.label}`,
+        gameOver: false,
+      })
+    }
+
+    if (this.props.gameOver && !this.state.gameOver) {
+      if (this.state.label !== "END GAME") {
+        this.setState({ gameOver: true, label: "YES" })
+        document.getElementById("end").classList.add("hide")
+      }
     }
   }
-
   handleClick() {
     switch (this.state.label) {
       case "START GAME":
-        this.setState({ label: "FLIP" });
-        this.props.handleClick("start");
-        break;
+        this.setState({ label: "FLIP" })
+        this.props.handleClick("start")
+        break
       case "FLIP":
-        this.setState({ label: "START NEXT ROUND" });
-        this.props.handleClick("flip");
-        break;
+        this.setState({ label: "START NEXT ROUND" })
+        this.props.handleClick("flip")
+        break
       case "START NEXT ROUND":
-        this.setState({ label: "FLIP" });
-        this.props.handleClick("startnextround");
-        break;
-      case "PLAY AGAIN":
-        this.setState({ label: "PLAY AGAIN" });
-        break;
+        this.setState({ label: "FLIP" })
+        this.props.handleClick("startnextround")
+        break
       case "END GAME":
-        // this.setState({label: 'NO' })
-        this.props.handleClick("end");
-
-        //reset label on the other button to START GAME
-        //you will need to pass the id of this label to app and
-        //do something
-        break;
+        this.props.handleClick("end")
+        break
+      case "YES":
+        this.props.handleClick("yes")
+        this.setState({ label: "START GAME" })
+        break
       default:
-        //do nothing? i guess?
-        break;
+        break
     }
   }
 
@@ -57,13 +61,13 @@ class Button extends Component {
     return (
       <button
         id={this.props.id}
-        className={this.state.color}
+        className={this.props.color}
         onClick={this.handleClick}
       >
         {this.state.label}
       </button>
-    );
+    )
   }
 }
 
-export default Button;
+export default Button

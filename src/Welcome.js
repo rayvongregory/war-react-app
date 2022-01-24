@@ -1,44 +1,54 @@
-import React, { Component } from "react";
-import Numbr from "./Numbr";
-import "./Welcome.css";
-import { message } from "./WarFunctions.js";
+import React, { Component } from "react"
+import Numbr from "./Numbr"
+import "./Welcome.css"
+import { message } from "./WarFunctions.js"
 
 class Welcome extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       welcome: "show",
       numplayers: "hide",
       dist: "hide",
       colors: "hide",
       overlay: "show",
-    };
+    }
 
-    this.enterKey = this.enterKey.bind(this);
-    this.handleReturnToStart = this.handleReturnToStart.bind(this);
-    this.handleNumPlayers = this.handleNumPlayers.bind(this);
-    this.handleDist = this.handleDist.bind(this);
-    this.handleColor = this.handleColor.bind(this);
-    this.handleChanges = this.handleChanges.bind(this);
+    this.enterKey = this.enterKey.bind(this)
+    this.handleReturnToStart = this.handleReturnToStart.bind(this)
+    this.handleNumPlayers = this.handleNumPlayers.bind(this)
+    this.handleDist = this.handleDist.bind(this)
+    this.handleColor = this.handleColor.bind(this)
+    this.handleChanges = this.handleChanges.bind(this)
   }
 
   componentDidMount() {
-    document.addEventListener("click", this.handleNumPlayers);
-    document.addEventListener("keypress", this.enterKey);
+    document.addEventListener("click", this.handleNumPlayers)
+    document.addEventListener("keydown", this.enterKey)
   }
 
   componentDidUpdate() {
-    if (this.props.draw === "PLAY AGAIN") {
-      document.removeEventListener("keypress", this.enterKey);
+    if (this.props.reset) {
+      document.addEventListener("click", this.handleNumPlayers)
+      document.addEventListener("keydown", this.enterKey)
+      return this.setState({
+        welcome: "show",
+        numplayers: "hide",
+        dist: "hide",
+        colors: "hide",
+        overlay: "show",
+        reset: false,
+      })
+    }
+    if (this.props.reset && this.state.overlay === "hide") {
+      document.removeEventListener("keydown", this.enterKey)
+      this.setState({ overlay: "show", numplayers: "show" })
     }
   }
 
   enterKey(e) {
-    if (e.keyCode === 13 && this.state.welcome === "show") {
-      this.handleNumPlayers();
-    } else if (e.keyCode === 13 && this.state.overlay === "hide") {
-      e.preventDefault();
-      document.getElementById("draw").click();
+    if (e.key === "Enter" && this.state.welcome === "show") {
+      this.handleNumPlayers()
     }
   }
 
@@ -49,34 +59,33 @@ class Welcome extends Component {
       dist: "hide",
       colors: "hide",
       overlay: "show",
-    });
-    document.addEventListener("click", this.handleNumPlayers);
-    document.addEventListener("keypress", this.enterKey);
+    })
+    document.addEventListener("click", this.handleNumPlayers)
+    document.addEventListener("keydown", this.enterKey)
   }
 
   handleNumPlayers() {
-    document.removeEventListener("click", this.handleNumPlayers);
-    this.setState({ numplayers: "show", welcome: "hide" });
+    document.removeEventListener("click", this.handleNumPlayers)
+    this.setState({ numplayers: "show", welcome: "hide" })
   }
 
   handleDist(num) {
-    this.props.pickNumPlayers(parseInt(num));
-    this.setState({ numplayers: "hide", dist: "show" });
+    this.props.pickNumPlayers(parseInt(num))
+    this.setState({ numplayers: "hide", dist: "show" })
   }
 
   handleColor(event) {
-    this.setState({ dist: "hide", colors: "show" });
-    this.props.deckDist(`${event.target.id}`);
+    this.setState({ dist: "hide", colors: "show" })
+    this.props.deckDist(`${event.target.id}`)
   }
 
   handleChanges(event) {
-    //or show a "want to play again?" screen
-    this.setState({ numplayers: "show", overlay: "hide" });
-    this.props.chooseColor(`${event.target.id}`);
+    this.setState({ overlay: "hide", colors: "hide" })
+    this.props.chooseColor(`${event.target.id}`)
   }
 
   render() {
-    const MESSAGE = message();
+    const MESSAGE = message()
     return (
       <div className={`overlay ${this.state.overlay}`}>
         <div className={`welcomemessage ${this.state.welcome}`}>
@@ -204,8 +213,8 @@ class Welcome extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Welcome;
+export default Welcome
