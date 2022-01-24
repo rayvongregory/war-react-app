@@ -5,7 +5,7 @@ but then I learned about React and scrapped pretty much everything and made it a
 
 ## Why War?
 
-I watched [https://www.youtube.com/watch?v=jaVNP3nIAv0](whatsdev) on YouTube make Rock, Paper, Scissors and that inspired me to recreate another game I used to play as a kid - War. It's a simple game with simple rules and it doesn't require any skill at all which made it the perfect game to play with my older siblings growing up.
+I watched [whatsdev](https://www.youtube.com/watch?v=jaVNP3nIAv0) on YouTube make Rock, Paper, Scissors and that inspired me to recreate another game I used to play as a kid - War. It's a simple game with simple rules and it doesn't require any skill at all which made it the perfect game to play with my older siblings growing up.
 
 In the project directory, you can run:
 
